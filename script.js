@@ -33,7 +33,7 @@ function playRound(playerSelection, computerSelection) {
         
         return console.log(`${computerSelection} beats ${playerSelection}.`);
     }
-    console.log(`Player wins:${playerTotal}\nComputer wins:${computerTotal}`)
+    
 }
 
 /*
@@ -50,11 +50,23 @@ function game() {
         playRound(playerSelection, getComputerChoice());
         
        
-        console.log(`Player Score:${playerTotal}\nComputer Score ${computerTotal}`);
+      
     }
+     console.log(`Player Score:${playerTotal}\nComputer Score ${computerTotal}`);
+    if (i=5 && playerTotal > computerTotal) {
+            console.log(`You win. You are an inspiration to us all.`);
+        }
+    else if (i=5 && computerTotal > playerTotal) {
+            console.log(`You lose. You suck.`);
+        }
+    else if (i=5) {
+            console.log(`No one won. It's a tie? What the hell guys?`)
+        }
+    console.log(`Player wins:${playerTotal}\nComputer wins:${computerTotal}`)
 }
 /*
 4. Score tracker function to keep score best of 5.
     a. Keep tally of user vs computer
     b. Once a player reaches 3 wins, they are the winner, break loop
 */
+
