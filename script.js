@@ -3,9 +3,11 @@
     a. Program will randomly select string from an array
 */
 const rps = ['rock', 'paper', 'scissors'];
-const rando = Math.floor(Math.random() * rps.length);
+let playerTotal = 0;
+let computerTotal = 0; 
 
 function getComputerChoice() {
+    let rando = Math.floor(Math.random() * rps.length);
     return rps[rando];
 }
 
@@ -18,16 +20,20 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     playerSelection.toLowerCase();
-    if (playerSelection === 'rock' & getComputerChoice() === 'scissors' || playerSelection === 'scissors' & getComputerChoice() === 'paper' || playerSelection === 'paper' & getComputerChoice() === 'rock'){
-        return alert('You win!');
+    if ((playerSelection == 'rock' & computerSelection == 'scissors') || (playerSelection === 'scissors' & computerSelection === 'paper') || (playerSelection === 'paper' & computerSelection === 'rock')){
+        playerTotal +=1;
+        return console.log(`${playerSelection} beats ${computerSelection}.`);
     }
-    else if (playerSelection === getComputerChoice()) {
-        return alert('Draw!');
+    else if (playerSelection == getComputerChoice()) {
+        
+        return console.log(`Damn, what? You both went with ${playerSelection}? Really?`);
     }
     else {
-        return alert('You lose!');
+        computerTotal +=1;
+        
+        return console.log(`${computerSelection} beats ${playerSelection}.`);
     }
-    
+    console.log(`Player wins:${playerTotal}\nComputer wins:${computerTotal}`)
 }
 
 /*
@@ -36,8 +42,17 @@ function playRound(playerSelection, computerSelection) {
     b. use prompt() for user input 
 */
 
-
-
+function game() {
+    
+    for (let i=0; i < 5; i++) {
+        let shoot = prompt('Rock - Paper - Scissors - SHOOT!').toLowerCase();
+        playerSelection = shoot;
+        playRound(playerSelection, getComputerChoice());
+        
+       
+        console.log(`Player Score:${playerTotal}\nComputer Score ${computerTotal}`);
+    }
+}
 /*
 4. Score tracker function to keep score best of 5.
     a. Keep tally of user vs computer
